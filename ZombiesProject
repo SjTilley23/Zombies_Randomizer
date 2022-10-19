@@ -1,0 +1,34 @@
+import random
+Challenge = ["2 Box","No Jugg","Only Jugg","Melee Only","EE Speedrun","Pap all Guns","321 Challenge","Spawn Room","Box Roulette","Wall Weapons Only","No Pack-a-Punch","Olympia Only","Explosives Only"]
+Map = ["Town","Farm","Tranzit","Bus Depot","Mob","Buried","Die Rise"]
+x = 0
+while x == 0:
+    MapNumber = random.randint(0,6)
+    ChallengeNumber = random.randint(0,12)
+    if MapNumber == 0:
+        if ChallengeNumber == 4:
+            continue
+        break
+    if MapNumber == 1:
+        if ChallengeNumber in (4,5,6):
+            continue
+        break
+    if MapNumber == 2:
+        if ChallengeNumber == 4:
+            continue
+        break
+    if MapNumber == 3:
+        if ChallengeNumber in (2,4,5,6):
+            continue
+        break
+    if MapNumber == 4:
+        break
+    if MapNumber == 5:
+        if ChallengeNumber == 4:
+            continue
+        break
+    if MapNumber == 6:
+        if ChallengeNumber == 4:
+            continue
+        break
+print((Map[MapNumber]),",",(Challenge[ChallengeNumber]))

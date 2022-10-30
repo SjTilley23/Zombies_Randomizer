@@ -15,36 +15,16 @@ run = True
 secondScreen = False
 Challenge = ["2 Box","No Jugg","Only Jugg","Melee Only","EE Speedrun","Pap all Weapons","321 Challenge","No Open Doors","Box Roulette","Explosives Only","Wall Weapons Only","No Pack-a-Punch","Olympia Only","Spawn Room"]
 Map = ["Town","Farm","Tranzit","Bus Depot","Mob","Buried","Die Rise","Nuketown","Origins"]
-cDescriptions = ["Hit the box twice as fast as you can. You must use only those 2 weapons for the remainder of the game.",
-"You are not allowed to buy Jugger-nog.",
-"The only perk you are allowed to have is Jugger-nog.",
-"You are not allowed to use guns, traps, or anything but your melee to kill zombies.",
-"Complete the map's easter egg as fast as possible. Counted by round, not by time.",
-"Pack-a-punch all weapons available on the map. Including the starting pistol.", 
-"3 Perks, 2 Box hits, 1 Pack-a-Punch. You can replace a box hit with a wall weapon, but you cannot re-pack.",
-"You cannot spend any points to open doors. Doors unlocked by other means are fine.",
-"Starting at Round 5 you must hit the box every round and use that weapon until it runs out of ammo or the round ends.",
-"You must get an explosives weapon as fast as possible. After that you must only use that and other explosives weapons for the remainder of the game. Grenades count.",
-"You cannot hit the box for a weapon. You must buy it off a wall. Bowie knife and Galvaknuckles count.",
-"You are not allowed to use the Pack=a-Punch machine",
-"The only weapon you can use is the olympia. Pack-a-Punch'ing is fine",
-"You cannot leave the spawn area. The spawn area is anywhere you can get without triggering an event, like opening doors, falling down pits, etc"]
 bDescriptions = ["Quick Revive/Afterlife","Starting Pistol","Melee/Knifing","Melee/Knife Upgrades","Hells Retriever (if applicable)","Equipment","Non-lethal Buildables","Lethal Buildables"]
-redGreen = [["darkred","green","green","darkred","darkred","green","green","darkred"],
-["darkred","green","green","green","green","green","green","green"],
-["darkred","green","green","darkred","green","green","green","green"],
-["darkred","darkred","green","green","darkred","darkred","green","darkred"],
-["green","green","green","green","green","green","green","green"],
-["darkred","green","green","green","green","green","green","green"],
-["darkred","green","green","darkred","darkred","green","green","darkred"],
-["darkred","green","green","darkred","darkred","green","green","green"],
-["darkred","green","green","darkred","darkred","green","green","darkred"],
-["darkred","darkred","green","darkred","darkred","green","green","green"],
-["darkred","darkred","darkred","green","darkred","green","green","darkred"],
-["darkred","green","green","darkred","darkred","green","green","darkred"],
-["darkred","darkred","green","darkred","darkred","green","green","darkred"],
-["darkred","green","green","darkred","darkred","green","darkred","darkred"]]
-check = False
+cDescriptions3 = open("ZombiesProjectGuiF/cDescriptions.txt", "r")
+cDescriptions2 = cDescriptions3.read()
+cDescriptions = cDescriptions2.split("3g")
+cDescriptions3.close()
+redGreen3 = open("ZombiesProjectGuiF/redGreen.txt", "r")
+redGreen2 = redGreen3.read()
+redGreen = redGreen2.split("3g")
+redGreen3.close()
+
 clock = pygame.time.Clock()
 while run:
     window.fill((119, 119, 119))
@@ -122,9 +102,10 @@ while run:
         PygameTWF.renderTextWrap((cDescriptions[challengeNumber]), Type2, (0,0,0), 795, window, 0,503,50)
 
         #Red and Green Boxes 
-        for index, amount in enumerate((redGreen[challengeNumber])):     
+        redgreen7 = (redGreen[challengeNumber]).split("4g")
+        for index, amount in enumerate(redgreen7):
             pygame.draw.rect(window, (amount), (15,105 + index * 50,25,25))
-                   
+
         # Displaying the Map and Challenge
         mapName = Type2.render(str(Map[mapNumber]), True, (0,0,0))
         challengeName = Type2.render(str(Challenge[challengeNumber]),True, (0,0,0))

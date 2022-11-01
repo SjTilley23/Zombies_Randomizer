@@ -3,6 +3,7 @@ import pygame
 import random
 import math
 import PygameTWF
+import 
 pygame.init()
 check = False
 window = pygame.display.set_mode([800,800])
@@ -117,32 +118,39 @@ while run:
         window.blit(fPS, (755,780))
     
         # Extra info on hover, Make function that automatically does this, Manual sucks
-        questionDraw = 8
-        if pygame.mouse.get_pos()[0] < 435:
-            if pygame.mouse.get_pos()[1] > 105 and pygame.mouse.get_pos()[1] < 155:
-                pygame.draw.rect(window,(205,205,205),(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],150,50))
-                PygameTWF.renderTextWrap("Afterlife is fine if you kill yourself, but not if you die to zombies",Type3,(0,0,0),150,window,pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],14)
-            if pygame.mouse.get_pos()[1] > 155 and pygame.mouse.get_pos()[1] < 205:
-                pygame.draw.rect(window,(205,205,205),(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],200,62))
-                PygameTWF.renderTextWrap("you must eventually replace this gun in challenges that require you to use specific guns and have this enabled",Type3,(0,0,0),200,window,pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],14)
-            if pygame.mouse.get_pos()[1] > 205 and pygame.mouse.get_pos()[1] < 255:
-                pygame.draw.rect(window,(205,205,205),(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],135,35))
-                PygameTWF.renderTextWrap("This refers to your starting knife",Type3,(0,0,0),150,window,pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],14)
-            if pygame.mouse.get_pos()[1] > 255 and pygame.mouse.get_pos()[1] < 305:
-                pygame.draw.rect(window,(205,205,205),(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],165,62))
-                PygameTWF.renderTextWrap("This includes, Glavaknuckles, Bowie Knife, Silver Spoon, and The Golden Spork",Type3,(0,0,0),175,window,pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],14)
-            if pygame.mouse.get_pos()[1] > 305 and pygame.mouse.get_pos()[1] < 355:
-                pygame.draw.rect(window,(205,205,205),(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],130,35))
-                PygameTWF.renderTextWrap("Only applicable on Mob of the Dead",Type3,(0,0,0),150,window,pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],14)
-            if pygame.mouse.get_pos()[1] > 355 and pygame.mouse.get_pos()[1] < 405:
-                pygame.draw.rect(window,(205,205,205),(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],200,50))
-                PygameTWF.renderTextWrap("Grenades, EMP's, Monkeys, Time Bombs, and Claymores are all equipment items",Type3,(0,0,0),200,window,pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],14)
-            if pygame.mouse.get_pos()[1] > 405 and pygame.mouse.get_pos()[1] < 455:
-                pygame.draw.rect(window,(205,205,205),(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],170,62))
-                PygameTWF.renderTextWrap("Zombie Shield and trample steam are fine, as long as you dont attack with them",Type3,(0,0,0),175,window,pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],14)
-            if pygame.mouse.get_pos()[1] > 455 and pygame.mouse.get_pos()[1] < 505:
-                pygame.draw.rect(window,(205,205,205),(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],145,35))
-                PygameTWF.renderTextWrap("This is any buildable designed to kill",Type3,(0,0,0),150,window,pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],14)
+
+
+
+
+
+
+
+
+        # if pygame.mouse.get_pos()[0] < 435:
+        #     if pygame.mouse.get_pos()[1] > 105 and pygame.mouse.get_pos()[1] < 155:
+        #         pygame.draw.rect(window,(205,205,205),(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],150,50))
+        #         PygameTWF.renderTextWrap("Afterlife is fine if you kill yourself, but not if you die to zombies",Type3,(0,0,0),150,window,pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],14)
+        #     if pygame.mouse.get_pos()[1] > 155 and pygame.mouse.get_pos()[1] < 205:
+        #         pygame.draw.rect(window,(205,205,205),(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],200,62))
+        #         PygameTWF.renderTextWrap("you must eventually replace this gun in challenges that require you to use specific guns and have this enabled",Type3,(0,0,0),200,window,pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],14)
+        #     if pygame.mouse.get_pos()[1] > 205 and pygame.mouse.get_pos()[1] < 255:
+        #         pygame.draw.rect(window,(205,205,205),(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],135,35))
+        #         PygameTWF.renderTextWrap("This refers to your starting knife",Type3,(0,0,0),150,window,pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],14)
+        #     if pygame.mouse.get_pos()[1] > 255 and pygame.mouse.get_pos()[1] < 305:
+        #         pygame.draw.rect(window,(205,205,205),(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],165,62))
+        #         PygameTWF.renderTextWrap("This includes, Glavaknuckles, Bowie Knife, Silver Spoon, and The Golden Spork",Type3,(0,0,0),175,window,pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],14)
+        #     if pygame.mouse.get_pos()[1] > 305 and pygame.mouse.get_pos()[1] < 355:
+        #         pygame.draw.rect(window,(205,205,205),(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],130,35))
+        #         PygameTWF.renderTextWrap("Only applicable on Mob of the Dead",Type3,(0,0,0),150,window,pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],14)
+        #     if pygame.mouse.get_pos()[1] > 355 and pygame.mouse.get_pos()[1] < 405:
+        #         pygame.draw.rect(window,(205,205,205),(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],200,50))
+        #         PygameTWF.renderTextWrap("Grenades, EMP's, Monkeys, Time Bombs, and Claymores are all equipment items",Type3,(0,0,0),200,window,pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],14)
+        #     if pygame.mouse.get_pos()[1] > 405 and pygame.mouse.get_pos()[1] < 455:
+        #         pygame.draw.rect(window,(205,205,205),(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],170,62))
+        #         PygameTWF.renderTextWrap("Zombie Shield and trample steam are fine, as long as you dont attack with them",Type3,(0,0,0),175,window,pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],14)
+        #     if pygame.mouse.get_pos()[1] > 455 and pygame.mouse.get_pos()[1] < 505:
+        #         pygame.draw.rect(window,(205,205,205),(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],145,35))
+        #         PygameTWF.renderTextWrap("This is any buildable designed to kill",Type3,(0,0,0),150,window,pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],14)
 
     previousClick = Click[0]
     pygame.display.flip()

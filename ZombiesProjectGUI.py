@@ -21,6 +21,7 @@ rangesList = ["953g145","1453g195","1953g245","2453g295","2953g345","3453g395","
 extraInfoDesc3 = open("ExtraInfoDescriptions.txt", "r")
 extraInfoDesc2 = extraInfoDesc3.read()
 extraInfoDesc = extraInfoDesc2.split("3g")
+extraInfoDesc3.close()
 cDescriptions3 = open("cDescriptions.txt", "r")
 cDescriptions2 = cDescriptions3.read()
 cDescriptions = cDescriptions2.split("3g")
@@ -127,7 +128,6 @@ while run:
                 rangesList2 = amount.split("3g")
                 if int(rangesList2[0]) <= pygame.mouse.get_pos()[1] < int(rangesList2[1]):
                     displayExtraInfo = index
-            
             PygameCTBF.cursorTextBox((extraInfoDesc[displayExtraInfo]),Type3,(0,0,0),200,window,15,(190,190,190))
 
     previousClick = Click[0]

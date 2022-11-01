@@ -1,3 +1,5 @@
+import pygame
+pygame.init()
 def cursorTextBox(text, font, color, allowedWidth, window, shiftInY, rectColor):
     #splitting the text
     listOfStrings = [text]

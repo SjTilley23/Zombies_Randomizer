@@ -3,7 +3,7 @@ import pygame
 import random
 import math
 import PygameTWF
-import CursorTextBox
+import PygameCTBF
 pygame.init()
 check = False
 window = pygame.display.set_mode([800,800])
@@ -17,6 +17,10 @@ secondScreen = False
 Challenge = ["2 Box","No Jugg","Only Jugg","Melee Only","EE Speedrun","Pap all Weapons","321 Challenge","No Open Doors","Box Roulette","Explosives Only","Wall Weapons Only","No Pack-a-Punch","Olympia Only","Spawn Room"]
 Map = ["Town","Farm","Tranzit","Bus Depot","Mob","Buried","Die Rise","Nuketown","Origins"]
 bDescriptions = ["Quick Revive/Afterlife","Starting Pistol","Melee/Knifing","Melee/Knife Upgrades","Hells Retriever","Equipment","Non-lethal Buildables","Lethal Buildables"]
+rangesList = ["953g145","1453g195","1953g245","2453g295","2953g345","3453g395","3953g445","4453g495"]
+extraInfoDesc3 = open("ExtraInfoDescriptions.txt", "r")
+extraInfoDesc2 = extraInfoDesc3.read()
+extraInfoDesc = extraInfoDesc2.split("3g")
 cDescriptions3 = open("cDescriptions.txt", "r")
 cDescriptions2 = cDescriptions3.read()
 cDescriptions = cDescriptions2.split("3g")
@@ -118,8 +122,13 @@ while run:
         window.blit(fPS, (755,780))
     
         # Extra info on hover
-
+        if pygame.mouse.get_pos()[0] < 435 and pygame.mouse.get_pos()[1] > 105 and pygame.mouse.get_pos()[1] < 505:
+            for index, amount in enumerate(rangesList):
+                rangesList2 = amount.split("3g")
+                if int(rangesList2[0]) <= pygame.mouse.get_pos()[1] < int(rangesList2[1]):
+                    displayExtraInfo = index
             
+            PygameCTBF.cursorTextBox((extraInfoDesc[displayExtraInfo]),Type3,(0,0,0),200,window,15,(190,190,190))
 
 
 

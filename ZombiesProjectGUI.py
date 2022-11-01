@@ -3,7 +3,7 @@ import pygame
 import random
 import math
 import PygameTWF
-import 
+import CursorTextBox
 pygame.init()
 check = False
 window = pygame.display.set_mode([800,800])
@@ -117,8 +117,9 @@ while run:
         fPS = Type3.render(str(math.trunc(clock.get_fps())) + " fps", True, (0,0,0))
         window.blit(fPS, (755,780))
     
-        # Extra info on hover, Make function that automatically does this, Manual sucks
+        # Extra info on hover
 
+            
 
 
 

@@ -110,8 +110,8 @@ while gameGoBRRR:
         # Extra info on hover
         if pygame.mouse.get_pos()[0] < 435 and pygame.mouse.get_pos()[1] > 105 and pygame.mouse.get_pos()[1] < 505:
             for index, amount in enumerate(rangesList):
-                rangesList2 = amount.split("3g")
-                if int(rangesList2[0]) <= pygame.mouse.get_pos()[1] < int(rangesList2[1]):
+                rangetuples = amount
+                if rangetuples[0] <= pygame.mouse.get_pos()[1] < rangetuples[1]:
                     displayExtraInfo = index
             PygameCTBF.cursorTextBox((extraInfoDesc[displayExtraInfo]),fontFace3,(0,0,0),200,window,15,(190,190,190))
 

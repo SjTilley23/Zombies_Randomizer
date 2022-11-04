@@ -4,6 +4,7 @@ import random
 import math
 import PygameTWF
 import PygameCTBF
+import VariousLists
 pygame.init()
 check = False
 window = pygame.display.set_mode([800,800])
@@ -14,10 +15,7 @@ previousClick = False
 cyanTimer = 0
 run = True
 secondScreen = False
-Challenge = ["2 Box","No Jugg","Only Jugg","Melee Only","EE Speedrun","Pap all Weapons","321 Challenge","No Open Doors","Box Roulette","Explosives Only","Wall Weapons Only","No Pack-a-Punch","Olympia Only","Spawn Room"]
-Map = ["Town","Farm","Tranzit","Bus Depot","Mob","Buried","Die Rise","Nuketown","Origins"]
-bDescriptions = ["Quick Revive/Afterlife","Starting Pistol","Melee/Knifing","Melee/Knife Upgrades","Hells Retriever","Equipment","Non-lethal Buildables","Lethal Buildables"]
-rangesList = ["953g145","1453g195","1953g245","2453g295","2953g345","3453g395","3953g445","4453g495"]
+
 extraInfoDesc3 = open("ExtraInfoDescriptions.txt", "r")
 extraInfoDesc2 = extraInfoDesc3.read()
 extraInfoDesc = extraInfoDesc2.split("3g")
@@ -26,10 +24,6 @@ cDescriptions3 = open("cDescriptions.txt", "r")
 cDescriptions2 = cDescriptions3.read()
 cDescriptions = cDescriptions2.split("3g")
 cDescriptions3.close()
-redGreen3 = open("redGreen.txt", "r")
-redGreen2 = redGreen3.read()
-redGreen = redGreen2.split("3g")
-redGreen3.close()
 
 clock = pygame.time.Clock()
 while run:
@@ -108,8 +102,8 @@ while run:
         PygameTWF.renderTextWrap((cDescriptions[challengeNumber]), Type2, (0,0,0), 795, window, 0,503,50)
 
         #Red and Green Boxes 
-        redgreen7 = (redGreen[challengeNumber]).split("4g")
-        for index, amount in enumerate(redgreen7):
+        redgreen2 = (redGreen[challengeNumber]).split()
+        for index, amount in enumerate(redgreen2):
             pygame.draw.rect(window, (amount), (15,105 + index * 50,25,25))
 
         # Displaying the Map and Challenge

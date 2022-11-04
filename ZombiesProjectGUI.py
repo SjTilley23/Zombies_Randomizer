@@ -113,7 +113,8 @@ while gameGoBRRR:
                 rangetuples = amount
                 if rangetuples[0] <= pygame.mouse.get_pos()[1] < rangetuples[1]:
                     displayExtraInfo = index
-            PygameCTBF.cursorTextBox((extraInfoDesc[displayExtraInfo]),fontFace3,(0,0,0),200,window,15,(190,190,190))
+            PygameCTBF.cursorTextBox((extraInfoDesc[displayExtraInfo]),fontFace3,(0,0,0),200,window,15,(190,190,190),(0,0,0),2)
+            
 
     previousClick = Click[0]
     pygame.display.flip()

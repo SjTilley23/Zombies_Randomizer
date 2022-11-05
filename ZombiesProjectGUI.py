@@ -196,8 +196,17 @@ while gameGoBRRR:
             xWaitTime = xWaitTime - 1
         
         # Removing x's when you click on them
+        for index, amount in enumerate(xBoxList):
+            xboxListRepeats = 0
+            removingIndex = index
+            checkingAmount = amount
+            for index, amount in enumerate(xBoxList):
+                if checkingAmount == amount:
+                    xboxListRepeats = xboxListRepeats + 1
+                if xboxListRepeats > 1:
+                    xBoxList.remove(amount)
+                    xBoxList.remove(checkingAmount)
 
-        
         fPS = fontFace3.render(str(math.trunc(clock.get_fps())) + " fps", True, (0,0,0))
         window.blit(fPS, (705,790))
 

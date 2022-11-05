@@ -7,7 +7,7 @@ import PygameCTBF
 from VariousLists import Challenge, bDescriptions, redGreen, Map, rangesList, extraInfoDesc, cDescriptions, bingoLineList, bingoCardChallengeNames
 pygame.init()
 check = False
-yWrapShift = 0
+yShift = 0
 window = pygame.display.set_mode([800,800])
 fontFace = pygame.font.SysFont("impact", 80)        
 fontFace2 = pygame.font.SysFont("Playfair Display",50)
@@ -152,12 +152,12 @@ while gameGoBRRR:
         #Bingo Card Names
         for index, amount in enumerate(bingoCardChallengeNames):
             if index / 5 in [1,2,3,4]:
-                yWrapShift = yWrapShift + 150
+                yShift = yShift + 150
             if xShift > 600:
                 xShift = 0
-            PygameTWF.renderTextWrap(amount, fontFace4, (0,0,0), 150, window, 0 + xShift, 65 + yWrapShift, 10)
+            PygameTWF.renderTextWrap(amount, fontFace4, (0,0,0), 150, window, 0 + xShift, 65 + yShift, 10)
             xShift = xShift + 150
-        yWrapShift = 0
+        yShift = 0
         xShift = 0
 
 

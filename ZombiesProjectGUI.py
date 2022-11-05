@@ -7,6 +7,7 @@ import PygameCTBF
 from VariousLists import Challenge, bDescriptions, redGreen, Map, rangesList, extraInfoDesc, cDescriptions, bingoLineList, bingoCardChallengeNames
 pygame.init()
 check = False
+bingoCardChallengeNamesRandomized = []
 yShift = 0
 window = pygame.display.set_mode([800,800])
 fontFace = pygame.font.SysFont("impact", 80)        
@@ -48,7 +49,8 @@ while gameGoBRRR:
     #Second Screen
     if secondScreen:
         bingoCardScreen = False
-       
+        bingoCardChallengeNamesRandomized = []
+        
         #Redo Button
         if pygame.mouse.get_pos()[0] >= 690 and pygame.mouse.get_pos()[0] <= 790 and pygame.mouse.get_pos()[1] >= 10 and pygame.mouse.get_pos()[1] <= 60 and previousClick == False and Click[0]:
             mapNumber = random.randint(0,8)
@@ -122,16 +124,17 @@ while gameGoBRRR:
             PygameCTBF.cursorTextBox((extraInfoDesc[displayExtraInfo]),fontFace3,(0,0,0),200,window,15,(190,190,190),(0,0,0),2)
 
         # Bingo Button
-        pygame.draw.rect(window, (80,80,80), (665,75,125,50))
-        pygame.draw.rect(window, (30,30,30), (665,75,125,50),5)
+        pygame.draw.rect(window, (80,80,80), (665,65,125,50))
+        pygame.draw.rect(window, (30,30,30), (665,65,125,50),5)
         bingoType = fontFace2.render("Bingo", True, (0,0,0))
-        window.blit(bingoType,(677,82))
-        if pygame.mouse.get_pos()[0] >= 665 and pygame.mouse.get_pos()[0] <= 790 and pygame.mouse.get_pos()[1] >= 75 and pygame.mouse.get_pos()[1] <= 125 and previousClick == False and Click[0]:
+        window.blit(bingoType,(677,72))
+        if pygame.mouse.get_pos()[0] >= 665 and pygame.mouse.get_pos()[0] <= 790 and pygame.mouse.get_pos()[1] >= 65 and pygame.mouse.get_pos()[1] <= 115 and previousClick == False and Click[0]:
             secondScreen = False
             bingoCardScreen = True 
+            bingoCount = 24
 
     if bingoCardScreen:
-        #resizing the screen
+        # Resizing the screen
         window = pygame.display.set_mode([750,810])
         window.fill((140,140,140))
 
@@ -140,7 +143,7 @@ while gameGoBRRR:
         pygame.draw.rect(window, (30,30,30), (645,5,100,50),5)
         bingoType = fontFace2.render("Back", True, (0,0,0))
         window.blit(bingoType,(652,13))
-        if pygame.mouse.get_pos()[0] >= 645 and pygame.mouse.get_pos()[0] <= 745 and pygame.mouse.get_pos()[1] >= 10 and pygame.mouse.get_pos()[1] <= 60 and previousClick == False and Click[0]:
+        if pygame.mouse.get_pos()[0] >= 645 and pygame.mouse.get_pos()[0] <= 745 and pygame.mouse.get_pos()[1] >= 13 and pygame.mouse.get_pos()[1] <= 63 and previousClick == False and Click[0]:
             secondScreen = True
             window = pygame.display.set_mode([800,800])
 
@@ -150,17 +153,43 @@ while gameGoBRRR:
             pygame.draw.line(window, (0,0,0), (bingoStartEndCoord[0],bingoStartEndCoord[1]),(bingoStartEndCoord[2],bingoStartEndCoord[3]),5)
 
         #Bingo Card Names
-        for index, amount in enumerate(bingoCardChallengeNames):
+        while bingoCount >= 0:
+            bingoPicker = random.randint(0,24)
+            bingoCardChallengeNamesRandomized.append(bingoCardChallengeNames[bingoPicker])
+            bingoCount = bingoCount - 1
+        for index, amount in enumerate(bingoCardChallengeNamesRandomized):
             if index / 5 in [1,2,3,4]:
                 yShift = yShift + 150
             if xShift > 600:
                 xShift = 0
-            PygameTWF.renderTextWrap(amount, fontFace4, (0,0,0), 150, window, 0 + xShift, 65 + yShift, 10)
+            PygameTWF.renderTextWrap(amount, fontFace4, (0,0,0), 150, window, 0 + xShift, 65 + yShift, 18)
             xShift = xShift + 150
         yShift = 0
         xShift = 0
 
+        #Reroll bingo Card Button
+        pygame.draw.rect(window, (80,80,80), (540,5,100,50))
+        pygame.draw.rect(window, (30,30,30), (540,5,100,50),5)
+        bingoRedo = fontFace2.render("Redo",True,(0,0,0))
+        window.blit(bingoRedo, (547,13))
+        if pygame.mouse.get_pos()[0] > 540 and pygame.mouse.get_pos()[0] < 640 and pygame.mouse.get_pos()[1] > 13 and pygame.mouse.get_pos()[1] < 63 and previousClick == False and Click[0]:
+            bingoCount = 24
+            bingoCardChallengeNamesRandomized = []
 
+
+
+
+
+
+
+
+
+
+
+
+        
+        fPS = fontFace3.render(str(math.trunc(clock.get_fps())) + " fps", True, (0,0,0))
+        window.blit(fPS, (705,790))
 
     previousClick = Click[0]
     pygame.display.flip()

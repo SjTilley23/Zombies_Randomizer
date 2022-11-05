@@ -4,16 +4,16 @@ import random
 import math
 import PygameTWF
 import PygameCTBF
-from VariousLists import Challenge, bDescriptions, redGreen, Map, rangesList, extraInfoDesc, cDescriptions, bingoLineList, bingoCardChallengeNames
+from VariousLists import Challenge, bDescriptions, redGreen, Map, rangesList, extraInfoDesc, cDescriptions, bingoLineList, bingoCardChallengeNames, bingoBoxClickX
 pygame.init()
 check = False
 bingoCardChallengeNamesRandomized = []
 yShift = 0
-window = pygame.display.set_mode([800,800])
 fontFace = pygame.font.SysFont("impact", 80)        
 fontFace2 = pygame.font.SysFont("Playfair Display",50)
 fontFace3 = pygame.font.SysFont("Tahoma",15)
 fontFace4 = pygame.font.SysFont("Playfair Display", 30)
+window = pygame.display.set_mode([800,800])
 previousClick = False
 cyanTimer = 0
 gameGoBRRR = True
@@ -49,7 +49,6 @@ while gameGoBRRR:
     #Second Screen
     if secondScreen:
         bingoCardScreen = False
-        bingoCardChallengeNamesRandomized = []
         
         #Redo Button
         if pygame.mouse.get_pos()[0] >= 690 and pygame.mouse.get_pos()[0] <= 790 and pygame.mouse.get_pos()[1] >= 10 and pygame.mouse.get_pos()[1] <= 60 and previousClick == False and Click[0]:
@@ -129,23 +128,17 @@ while gameGoBRRR:
         bingoType = fontFace2.render("Bingo", True, (0,0,0))
         window.blit(bingoType,(677,72))
         if pygame.mouse.get_pos()[0] >= 665 and pygame.mouse.get_pos()[0] <= 790 and pygame.mouse.get_pos()[1] >= 65 and pygame.mouse.get_pos()[1] <= 115 and previousClick == False and Click[0]:
-            secondScreen = False
             bingoCardScreen = True 
             bingoCount = 24
+            bingoCardChallengeNamesRandomized = []
+            secondScreen = False
+
+
 
     if bingoCardScreen:
         # Resizing the screen
         window = pygame.display.set_mode([750,810])
         window.fill((140,140,140))
-
-        #Back Button
-        pygame.draw.rect(window, (80,80,80), (645,5,100,50))
-        pygame.draw.rect(window, (30,30,30), (645,5,100,50),5)
-        bingoType = fontFace2.render("Back", True, (0,0,0))
-        window.blit(bingoType,(652,13))
-        if pygame.mouse.get_pos()[0] >= 645 and pygame.mouse.get_pos()[0] <= 745 and pygame.mouse.get_pos()[1] >= 13 and pygame.mouse.get_pos()[1] <= 63 and previousClick == False and Click[0]:
-            secondScreen = True
-            window = pygame.display.set_mode([800,800])
 
         #Bingo Card Lines
         for index, amount in enumerate(bingoLineList):
@@ -176,8 +169,20 @@ while gameGoBRRR:
             bingoCount = 24
             bingoCardChallengeNamesRandomized = []
 
+        #X'ing out boxes when you click on them
+        for index, amount in enumerate(bingoBoxClickX):
+            coordinateTuple = amount
+            if coordinateTuple[0] <= pygame.mouse.get_pos()[0] <= coordinateTuple[1] and coordinateTuple[2] <= pygame.mouse.get_pos()[1] <= coordinateTuple[3] and previousClick == False and Click[0]:
+                print("Working")
 
-
+         #Back Button
+        pygame.draw.rect(window, (80,80,80), (645,5,100,50))
+        pygame.draw.rect(window, (30,30,30), (645,5,100,50),5)
+        bingoType = fontFace2.render("Back", True, (0,0,0))
+        window.blit(bingoType,(652,13))
+        if pygame.mouse.get_pos()[0] >= 645 and pygame.mouse.get_pos()[0] <= 745 and pygame.mouse.get_pos()[1] >= 13 and pygame.mouse.get_pos()[1] <= 63 and previousClick == False and Click[0]:
+            
+            secondScreen = True
 
 
 

@@ -206,6 +206,13 @@ while gameGoBRRR:
                 if xboxListRepeats > 1:
                     xBoxList.remove(amount)
                     xBoxList.remove(checkingAmount)
+        
+        #Displaying Challenge on top of bingo screen
+        if challengeNumber > 13:
+            window.blit(challengeName, (5,10))
+        else:
+            customBingoChallenge = fontFace2.render("Custom Bingo",True,(0,0,0))
+            window.blit(customBingoChallenge,(5,10))
 
         fPS = fontFace3.render(str(math.trunc(clock.get_fps())) + " fps", True, (0,0,0))
         window.blit(fPS, (705,790))

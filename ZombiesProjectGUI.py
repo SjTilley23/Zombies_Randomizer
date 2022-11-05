@@ -45,7 +45,7 @@ while gameGoBRRR:
         generateScreen = False
         secondScreen = True
         mapNumber = random.randint(0,8)
-        challengeNumber = random.randint(0,13)
+        challengeNumber = random.randint(0,16)
 
     #Second Screen
     if secondScreen:
@@ -55,7 +55,7 @@ while gameGoBRRR:
         #Redo Button
         if pygame.mouse.get_pos()[0] >= 690 and pygame.mouse.get_pos()[0] <= 790 and pygame.mouse.get_pos()[1] >= 10 and pygame.mouse.get_pos()[1] <= 60 and previousClick == False and Click[0]:
             mapNumber = random.randint(0,8)
-            challengeNumber = random.randint(0,13)
+            challengeNumber = random.randint(0,16)
             cyanTimer = 3
             check = False
         if cyanTimer > 0:
@@ -82,19 +82,19 @@ while gameGoBRRR:
         while check == False:
             if challengeNumber == 4 and mapNumber != 4 and mapNumber != 8:
                 mapNumber = random.randint(0,8)
-                challengeNumber = random.randint(0,13)
+                challengeNumber = random.randint(0,16)
                 continue
             if mapNumber == 3 and challengeNumber in [1,2,5,6,11]:
                 mapNumber = random.randint(0,8)
-                challengeNumber = random.randint(0,13)
+                challengeNumber = random.randint(0,16)
                 continue
             if mapNumber == 2 and challengeNumber in [5,6,11]:
                 mapNumber = random.randint(0,8)
-                challengeNumber = random.randint(0,13)
+                challengeNumber = random.randint(0,16)
                 continue
             if mapNumber == 8 and challengeNumber == 12:
                 mapNumber = random.randint(0,8)
-                challengeNumber = random.randint(0,13)
+                challengeNumber = random.randint(0,16)
                 continue
             check = True
 

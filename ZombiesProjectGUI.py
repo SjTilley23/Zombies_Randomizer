@@ -8,6 +8,7 @@ from VariousLists import Challenge, bDescriptions, redGreen, Map, rangesList, ex
 pygame.init()
 check = False
 bingoCardChallengeNamesRandomized = []
+xBoxList = []
 yShift = 0
 fontFace = pygame.font.SysFont("impact", 80)        
 fontFace2 = pygame.font.SysFont("Playfair Display",50)
@@ -23,7 +24,7 @@ bingoCardScreen = False
 xShift = 0
 clock = pygame.time.Clock()
 while gameGoBRRR:
-    window.fill((119, 119, 119))
+    window.fill((119,119,119))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             gameGoBRRR = False
@@ -48,7 +49,8 @@ while gameGoBRRR:
 
     #Second Screen
     if secondScreen:
-        bingoCardScreen = False
+        #window = pygame.display.set_mode([800,800])
+        
         
         #Redo Button
         if pygame.mouse.get_pos()[0] >= 690 and pygame.mouse.get_pos()[0] <= 790 and pygame.mouse.get_pos()[1] >= 10 and pygame.mouse.get_pos()[1] <= 60 and previousClick == False and Click[0]:
@@ -132,8 +134,7 @@ while gameGoBRRR:
             bingoCount = 24
             bingoCardChallengeNamesRandomized = []
             secondScreen = False
-
-
+            xWaitTime = 10
 
     if bingoCardScreen:
         # Resizing the screen
@@ -168,12 +169,7 @@ while gameGoBRRR:
         if pygame.mouse.get_pos()[0] > 540 and pygame.mouse.get_pos()[0] < 640 and pygame.mouse.get_pos()[1] > 13 and pygame.mouse.get_pos()[1] < 63 and previousClick == False and Click[0]:
             bingoCount = 24
             bingoCardChallengeNamesRandomized = []
-
-        #X'ing out boxes when you click on them
-        for index, amount in enumerate(bingoBoxClickX):
-            coordinateTuple = amount
-            if coordinateTuple[0] <= pygame.mouse.get_pos()[0] <= coordinateTuple[1] and coordinateTuple[2] <= pygame.mouse.get_pos()[1] <= coordinateTuple[3] and previousClick == False and Click[0]:
-                print("Working")
+            xBoxList = []
 
          #Back Button
         pygame.draw.rect(window, (80,80,80), (645,5,100,50))
@@ -181,16 +177,25 @@ while gameGoBRRR:
         bingoType = fontFace2.render("Back", True, (0,0,0))
         window.blit(bingoType,(652,13))
         if pygame.mouse.get_pos()[0] >= 645 and pygame.mouse.get_pos()[0] <= 745 and pygame.mouse.get_pos()[1] >= 13 and pygame.mouse.get_pos()[1] <= 63 and previousClick == False and Click[0]:
-            
             secondScreen = True
+            window = pygame.display.set_mode([800,800])
+            xBoxList = []
+            bingoCardScreen = False
 
-
-
-
-
-
-
-
+        #X'ing out boxes when you click on them
+        if xWaitTime == 0:
+            for index, amount in enumerate(bingoBoxClickX):
+                coordinateTuple = amount
+                if coordinateTuple[0] <= pygame.mouse.get_pos()[0] <= coordinateTuple[1] and coordinateTuple[2] <= pygame.mouse.get_pos()[1] <= coordinateTuple[3] and previousClick == False and Click[0]:
+                    xBoxList.append(coordinateTuple)
+                for index, amount in enumerate(xBoxList):
+                    coordinateTuple2 = amount
+                    pygame.draw.line(window,(255,0,0),(coordinateTuple2[0],coordinateTuple2[2]),(coordinateTuple2[1],coordinateTuple2[3]),3)
+                    pygame.draw.line(window,(255,0,0),(coordinateTuple2[1],coordinateTuple2[2]),(coordinateTuple2[0],coordinateTuple2[3]),3)
+        if xWaitTime != 0:    
+            xWaitTime = xWaitTime - 1
+        
+        # Removing x's when you click on them
 
         
         fPS = fontFace3.render(str(math.trunc(clock.get_fps())) + " fps", True, (0,0,0))

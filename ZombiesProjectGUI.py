@@ -7,13 +7,15 @@ import PygameCTBF
 from VariousLists import Challenge, bDescriptions, redGreen, Map, rangesList, extraInfoDesc, cDescriptions, bingoLineList, bingoCardChallengeNames, bingoBoxClickX
 pygame.init()
 check = False
+totalIndexes = 0
 bingoCardChallengeNamesRandomized = []
 xBoxList = []
+excludedBingoNumbers = []
 yShift = 0
 fontFace = pygame.font.SysFont("impact", 80)        
 fontFace2 = pygame.font.SysFont("Playfair Display",50)
 fontFace3 = pygame.font.SysFont("Tahoma",15)
-fontFace4 = pygame.font.SysFont("Playfair Display", 30)
+fontFace4 = pygame.font.SysFont("Playfair Display", 29)
 window = pygame.display.set_mode([800,800])
 previousClick = False
 cyanTimer = 0
@@ -131,8 +133,9 @@ while gameGoBRRR:
         window.blit(bingoType,(677,72))
         if pygame.mouse.get_pos()[0] >= 665 and pygame.mouse.get_pos()[0] <= 790 and pygame.mouse.get_pos()[1] >= 65 and pygame.mouse.get_pos()[1] <= 115 and previousClick == False and Click[0]:
             bingoCardScreen = True 
-            bingoCount = 24
+            bingoCount = 1
             bingoCardChallengeNamesRandomized = []
+            excludedBingoNumbers = []
             secondScreen = False
             xWaitTime = 10
 
@@ -146,11 +149,27 @@ while gameGoBRRR:
             bingoStartEndCoord = amount
             pygame.draw.line(window, (0,0,0), (bingoStartEndCoord[0],bingoStartEndCoord[1]),(bingoStartEndCoord[2],bingoStartEndCoord[3]),5)
 
+        #Reroll bingo Card Button
+        pygame.draw.rect(window, (80,80,80), (540,5,100,50))
+        pygame.draw.rect(window, (30,30,30), (540,5,100,50),5)
+        bingoRedo = fontFace2.render("Redo",True,(0,0,0))
+        window.blit(bingoRedo, (547,13))
+        if pygame.mouse.get_pos()[0] > 540 and pygame.mouse.get_pos()[0] < 640 and pygame.mouse.get_pos()[1] > 13 and pygame.mouse.get_pos()[1] < 63 and previousClick == False and Click[0]:
+            bingoCount = 1
+            bingoCardChallengeNamesRandomized = []
+            excludedBingoNumbers = []
+            xBoxList = []
+        
         #Bingo Card Names
-        while bingoCount >= 0:
-            bingoPicker = random.randint(0,24)
+        while bingoCount != 0:
+            bingoPicker = random.randint(0,28)
+            if bingoPicker in excludedBingoNumbers:
+                continue
+            excludedBingoNumbers.append(bingoPicker)
             bingoCardChallengeNamesRandomized.append(bingoCardChallengeNames[bingoPicker])
-            bingoCount = bingoCount - 1
+            bingoChallengeAmount = len(excludedBingoNumbers)
+            if bingoChallengeAmount == 25:
+                bingoCount = 0
         for index, amount in enumerate(bingoCardChallengeNamesRandomized):
             if index / 5 in [1,2,3,4]:
                 yShift = yShift + 150
@@ -160,16 +179,6 @@ while gameGoBRRR:
             xShift = xShift + 150
         yShift = 0
         xShift = 0
-
-        #Reroll bingo Card Button
-        pygame.draw.rect(window, (80,80,80), (540,5,100,50))
-        pygame.draw.rect(window, (30,30,30), (540,5,100,50),5)
-        bingoRedo = fontFace2.render("Redo",True,(0,0,0))
-        window.blit(bingoRedo, (547,13))
-        if pygame.mouse.get_pos()[0] > 540 and pygame.mouse.get_pos()[0] < 640 and pygame.mouse.get_pos()[1] > 13 and pygame.mouse.get_pos()[1] < 63 and previousClick == False and Click[0]:
-            bingoCount = 24
-            bingoCardChallengeNamesRandomized = []
-            xBoxList = []
 
          #Back Button
         pygame.draw.rect(window, (80,80,80), (645,5,100,50))
@@ -214,10 +223,11 @@ while gameGoBRRR:
             customBingoChallenge = fontFace2.render("Custom Bingo",True,(0,0,0))
             window.blit(customBingoChallenge,(5,10))
 
+        #Bingo FPS
         fPS = fontFace3.render(str(math.trunc(clock.get_fps())) + " fps", True, (0,0,0))
         window.blit(fPS, (705,790))
 
     previousClick = Click[0]
     pygame.display.flip()
-    clock.tick(30)
+    clock.tick(60)
 pygame.quit()

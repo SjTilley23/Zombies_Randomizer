@@ -22,8 +22,10 @@ def cursorTextBox(text, font, color, allowedWidth, window, shiftInY, rectColor, 
     
     # Rendering, and Displaying
     for index, amount in enumerate(listOfStrings2):
-        pygame.draw.rect(window, rectColor, (pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],allowedWidth, shiftInY * index + font.get_height()))
-        pygame.draw.rect(window, edgeColor, (pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],allowedWidth, shiftInY * index + font.get_height()), edgeThickness)
+        pygame.draw.rect(window, rectColor, (pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],
+                allowedWidth, shiftInY * index + font.get_height()))
+        pygame.draw.rect(window, edgeColor, (pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1],
+                allowedWidth, shiftInY * index + font.get_height()), edgeThickness)
     for index, amount in enumerate(listOfStrings2):
         rendering = font.render(str(amount), True, color)
         window.blit(rendering, (pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1] + shiftInY * index ))

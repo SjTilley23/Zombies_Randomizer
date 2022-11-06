@@ -4,6 +4,9 @@ pygame.init()
 
 def cursor_text_box(text, font, color, allowed_width, window, shift_in_y,
                     rect_color, edge_color=(0, 0, 0), edge_thickness=-1):
+    """
+    Uses pygame to Render, Wrap, and Display Text at your mouse cursor, with or without a box
+    """
     # splitting the text
     list_of_strings = [text]
     list_of_strings_2 = []

@@ -1,3 +1,6 @@
+"""
+A program that generates challenges for BO2 zombies, includes map generation, and randomized zombies bingo
+"""
 import random
 import math
 import pygame

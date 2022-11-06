@@ -1,4 +1,7 @@
 def render_text_wrap(text, font, color, allowed_width, window, x_coord, y_coord, shift_in_y):
+    """
+    Uses pygame to automatically render text, wrap it, and display it on screen
+    """
     # splitting the text
     list_of_strings = [text]
     list_of_strings_2 = []

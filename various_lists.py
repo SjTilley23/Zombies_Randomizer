@@ -1,3 +1,6 @@
+"""
+Various lists that the main file pulls from for challenges, maps, and other things
+"""
 Challenge = ["2 Box",
              "No Jugg",
              "Only Jugg",

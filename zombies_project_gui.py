@@ -132,7 +132,7 @@ while GAME_GO_BRRR:
                 if rangetuples[0] <= pygame.mouse.get_pos()[1] < rangetuples[1]:
                     displayExtraInfo = index
             pygame_ctbf.cursor_text_box((extraInfoDesc[displayExtraInfo]), fontFace3, (0, 0, 0),
-                                     200, window, 15, (190, 190, 190), (0, 0, 0), 2)
+                                        200, window, 15, (190, 190, 190), (0, 0, 0), 2)
 
         # Bingo Button
         pygame.draw.rect(window, (80, 80, 80), (665, 65, 125, 50))
